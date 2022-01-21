@@ -1,0 +1,28 @@
+name: Docker Series Builds
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: docker build csharp
+        run: |
+          docker build ./c# -t aimvector/csharp:1.0.0
+      - name: docker build nodejs
+        run: |
+          docker build ./nodejs -t aimvector/nodejs:1.0.0
+      - name: docker build python
+        run: |
+          docker build ./nodejs -t aimvector/python:1.0.0
+      - name: docker build golang
+        run: |
+          docker build ./nodejs -t aimvector/golang:1.0.0
+          
